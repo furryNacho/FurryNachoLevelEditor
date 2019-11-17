@@ -1,0 +1,755 @@
+﻿<head>
+    <title></title>
+    <!--<script type="text/javascript">
+        function OnClick() {
+            var message = "no msg";
+            try {
+
+
+                var w = window.innerWidth;
+                var h = window.innerHeight;
+
+                message = "w: " + w + "h: " + h;
+
+            } catch (e) {
+                message = "catch: "+e;
+            }
+
+            window.external.ShowMessage(message);
+        }
+    </script>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+</head>
+<body id="body" scroll="no" style="padding:0px;margin:0px;">
+    <!--<a href="#" onclick="OnClick()">Click me</a>-->
+
+    <div class="container" style="height:800px; min-width: 1200px; max-width: 1200px; border:1px solid gray">
+
+        <div class="level-editor" style="overflow: auto; height: 100%; min-width: 950px; max-width: 950px; float: left; display: block;">
+
+            <div class="level-editor-wrapper" style="height: 100%; max-width: 100%; border: 1px solid gray">
+
+                <div>
+                    <div id="TBL"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="select-area" style="overflow: hidden; display: block; height: 100%; min-width: 240px;max-width: 240px;float: right;  border:1px solid gray">
+
+            <div id="optionsid" class="options" style="display:inline-block; height: 79%; max-width: 230px; min-width: 230px;  border:1px solid gray">
+
+
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'Tiles')">Tiles</button>
+                    <button class="tablinks" onclick="openCity(event, 'Attributes')">Attributes</button>
+                    <button class="tablinks" onclick="openCity(event, 'Settings')">Settings</button>
+                </div>
+                <!-- Tab content -->
+                <div id="Tiles" class="tabcontent" style="text-align: center; min-height: 92%; max-height: 92%; overflow-y: auto;">
+
+                    <!--fulkodar skit här-->
+                    <!--
+                        <div style="margin:5px" onclick="selecttile(2)">
+
+                                <div id="tiles-box-2" style="clear: both; display: inline-block; background-color: green; min-width: 64px; min-height: 64px">
+
+                             </div>
+                       </div>
+
+                    -->
+                    <!--fulkodar skit här-->
+
+                </div>
+
+                <div id="Attributes" class="tabcontent" style="text-align: center; max-height: 92%; overflow: auto">
+
+
+                    <div style="margin: 5px;" onclick="selectAttr(0)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/zero.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+
+                    <div style="margin:5px;" onclick="selectAttr(1)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/one.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+
+                    <div style="margin:5px;" onclick="selectAttr(2)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/two.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px; " onclick="selectAttr(3)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/three.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px;;" onclick="selectAttr(4)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/four.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px;" onclick="selectAttr(5)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/five.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px;" onclick="selectAttr(6)">
+                        <div id="tiles-box-1" style="border: 1px solid gray;clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/six.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px;" onclick="selectAttr(7)">
+                        <div id="tiles-box-1" style="border: 1px solid gray; clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/seven.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px" onclick="selectAttr(8)">
+                        <div id="tiles-box-1" style=" border: 1px solid gray; clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/eight.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+                    <div style="margin:5px" onclick="selectAttr(9)">
+                        <div id="tiles-box-1" style="border: 1px solid gray; clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+                            <img src="Content/Attributes/nine.bmp" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div id="Settings" class="tabcontent">
+                    <div>
+                        <button onclick="ButtonClick('save')">Save</button>
+                    </div>
+                    <div>
+                        <button onclick="ButtonClick('load')">Load</button>
+                    </div>
+                    <div>
+                        <button onclick="ButtonClick('export')">Export</button>
+                    </div>
+                    <div>
+                        <button onclick="ButtonClick('exit')">Exit</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="selected-item" style="text-align: center; height: 20%; max-width: 230px; min-width: 230px; border:1px solid gray">
+
+
+
+
+                <div style="margin: 5px; min-height: 64px; min-width: 64px;max-width: 64px; margin: auto; padding: 50px;">
+
+                    <img id="selected-box-1-img" src="" style="max-width: 64px; min-width: 64px; min-height: 64px; border: 1px solid gray;" />
+
+
+                    <div id="selected-box-1" style="clear: both; display: inline-block; min-width: 64px; max-width: 64px; min-height: 64px">
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        var indextile = [];
+        var indexAtt = [];
+        var selectedValue = 0;
+
+        var SettingsObj = {};
+
+        var selectedTileIs = 0;
+        var selectedTinyTilePath = "";
+
+        var tapthatisactive = { Tiles: false, Attributes: false, Settings: false };
+
+        function OnClick() {
+
+            var message = "no msg";
+
+            window.external.ShowMessage(message);
+        }
+
+
+        // Settings buttoncklick
+        function ButtonClick(name) {
+
+    
+            if (name == "export") {
+
+              //var dynamicObj = {indextileprop:indextile, indexAttprop: indexAtt};
+
+                var krabb1IndexTile = "";
+                var krabb2IndexAtt = "";
+
+                for (var i = 0; i < indextile.length; i++) {
+                    var colon = ";";
+                    if (i == indextile.length-1) {
+                        colon = ""; 
+                    }
+
+                    krabb1IndexTile += indextile[i]+colon;
+                    krabb2IndexAtt += indexAtt[i]+colon;
+                }
+              var dynamicObj = {indextileprop:krabb1IndexTile, indexAttprop: krabb2IndexAtt, width:SettingsObj.LvlWidth ,height:SettingsObj.LvlHeight};
+              window.external.Export(dynamicObj);
+
+
+
+
+            } else {
+
+                var resBtnClick = window.external.ButtonClick(name);
+
+            }
+
+
+        }
+
+
+
+
+        function selecttile(idselected) {
+
+            // alert("select title: " + idselected);
+            var string = idselected;
+            idselected = string.match(/\d+/g).map(Number);
+
+            var theElementCollection = document.getElementById("selected-box-1-img");
+            var srcImg = "Content/Load/Tiles/img" + idselected + ".jpg";
+            theElementCollection.src = srcImg;
+            selectedTileIs = srcImg;
+            selectedValue = idselected;
+        }
+
+        function selectAttr(idselected) {
+            var theElementCollection = document.getElementById("selected-box-1-img");
+            var mydic = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            var transInt = mydic[idselected];
+            var srcImg = "Content/Attributes/" + transInt + ".bmp";
+            theElementCollection.src = srcImg;
+            selectedTileIs = srcImg;
+            selectedTinyTilePath = "Content/Attributes/" + transInt + "tiny.bmp";
+            selectedValue = idselected;
+        }
+
+
+        document.getElementsByClassName = function (cl) {
+            var retnode = [];
+            var elem = this.getElementsByTagName('*');
+            for (var i = 0; i < elem.length; i++) {
+                if ((' ' + elem[i].className + ' ').indexOf(' ' + cl + ' ') > -1) retnode.push(elem[i]);
+            }
+            return retnode;
+        };
+
+        var tilsloaded = false;
+        function openCity(evt, cityName) {
+
+
+            if (cityName == "Tiles") {
+                tapthatisactive.Tiles = true;
+                tapthatisactive.Attributes = false;
+                tapthatisactive.Settings = false;
+
+                // dölj att
+                var els = document.querySelectorAll('.selectatt');
+                for (var i = 0; i < els.length; i++) {
+                    els[i].style.display = "none";
+                }
+
+                // TODO: nolla selected tile
+
+            } else if (cityName == "Attributes") {
+                tapthatisactive.Tiles = false;
+                tapthatisactive.Attributes = true;
+                tapthatisactive.Settings = false;
+
+
+                // visa att
+                var els = document.querySelectorAll('.selectatt');
+                for (var i = 0; i < els.length; i++) {
+                    els[i].style.display = "block";
+                }
+
+
+                // TODO: nolla selected tile
+
+            } else if (cityName == "Settings") {
+                tapthatisactive.Tiles = false;
+                tapthatisactive.Attributes = false;
+                tapthatisactive.Settings = true;
+
+                // Hida attribut också
+                // nolla selected tile också
+
+            } else {
+                tapthatisactive.Tiles = false;
+                tapthatisactive.Attributes = false;
+                tapthatisactive.Settings = false;
+            }
+
+
+
+
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+
+            if (!tilsloaded) {
+
+
+                try {
+
+
+
+                } catch (e) {
+                    alert("catch: " + e);
+                }
+
+                tilsloaded = true;
+
+            }
+
+        }
+
+        function DrawTiles() {
+
+
+
+            //<div style="margin:5px" onclick="selecttile(1)">
+            //    <div id="tiles-box-1" style="clear: both; display: inline-block; max-width: 64px; min-width: 64px; min-height: 64px">
+            //        <img src="Content/Load/Tiles/img0.jpg" style="max-width: 64px; min-width: 64px; min-height: 64px;" />
+            //    </div>
+            //</div>
+
+
+            var totalnumberoftiles = SettingsObj.NumberOfTilesHeight * SettingsObj.NumberOfTilesWidth;
+
+
+            var theElementCollection = document.getElementById("Tiles");
+
+            for (var i = 0; i < totalnumberoftiles; i++) {
+
+                //FÖrsta
+                var divtest = document.createElement("div");
+
+                divtest.setAttribute("id", i);
+
+                // divtest.innerHTML = "new div";
+
+                divtest.addEventListener('click', function (e) {
+
+                    // alert("klickade "+e.target.id);
+
+                    var thisClickID = e.target.id;
+                    selecttile(thisClickID);
+                });
+
+                // Andra
+                var secondnode = document.createElement("div");
+                // secondnode.innerHTML = "new div 2";
+
+
+                // tredje  <img src="../Content/Load/Tiles/img0.jpg" />
+                var img = document.createElement("img");
+                var srcImg = "Content/Load/Tiles/img" + i + ".jpg";
+                img.src = srcImg;
+                img.className += " gridimg";
+                img.className += " selecttile";
+                var idtouse = "selecttileimgid" + i;
+                img.setAttribute("id", idtouse);
+
+
+
+
+
+
+
+                theElementCollection.appendChild(divtest);
+                divtest.appendChild(secondnode);
+
+                secondnode.appendChild(img);
+
+
+            }
+
+        }
+
+
+
+        function DrawGrid() {
+
+
+
+
+            var theElementCollection = document.getElementById("TBL");
+            var table = document.createElement("TABLE");
+            var tblB = document.createElement("TBODY");
+            table.appendChild(tblB);
+            var totIdx = 0;
+            for (var i = 0; i < SettingsObj.LvlHeight; i++) {
+                var tr = document.createElement("TR");
+                var isisi = "mytrid" + i;
+                tr.setAttribute("id", isisi);
+                tblB.appendChild(tr);
+                for (var j = 0; j < SettingsObj.LvlWidth; j++) {
+                    var td = document.createElement("TD");
+                    var isisj = totIdx;
+                    td.setAttribute("id", isisj);
+                    //var asdf = "click: " + i + " " + j;
+                    //console.log(asdf);
+                    //td.onclick = function () {
+                    //    console.log(isisj);
+                    //};
+
+
+
+                    td.addEventListener('click', function (e) {
+                        //console.log(e);
+                        var thisClickID = e.target.id;
+                        //console.log(thisClickID);
+                        // target.id
+
+
+
+                        dostufftoclicktarget(thisClickID);
+                    });
+                    tr.appendChild(td);
+
+
+
+
+
+                    var img = document.createElement("img");
+                    var idtouse = "tileimgid" + isisj;
+                    img.setAttribute("id", idtouse);
+
+                    // img.className = " gridimg";
+                    // img.classList.add("gridimg");
+                    img.className += " gridimg";
+
+                    //  img.style.cssText = " max-width: 64px; min-width: 64px; min-height: 64px;";
+                    //img.style.cssText = " max-width: 100%; min-width: 100%; min-height: 100%;";
+                    
+
+                    var srcImg = "Content/Load/Tiles/img" + 0 + ".jpg";
+                    img.src = srcImg;
+                    //img.addEventListener('click', function (e) {
+                    //    //    var thisClickID = e.target.id;
+
+                    //    var thisClickID = e.target.id;
+                    //    dostufftoclicktarget(thisClickID);
+
+
+
+                    //});
+
+                    td.appendChild(img);
+
+
+                    // Attributes image
+                    var imgAtt = document.createElement("img");
+                    var srcImg = "Content/Attributes/zerotiny.bmp";
+                    imgAtt.src = srcImg;
+                    imgAtt.className += " selectatt";
+                    //var idtouse = "selecttileimgid" + i;
+                    //imgAtt.setAttribute("id", idtouse);
+
+                    var gridselectedatt = "gridselectedatt"+totIdx;
+                    imgAtt.setAttribute("id", gridselectedatt);
+
+                    td.appendChild(imgAtt);
+
+
+
+
+
+                    totIdx++;
+                };
+            };
+            theElementCollection.appendChild(table);
+
+        }
+
+
+        function dostufftoclicktarget(id) {
+
+
+
+            // blev lite fuck up med vilket id som skickas in..
+            var string = id;
+            id = string.match(/\d+/g).map(Number);
+
+            
+
+            if (tapthatisactive.Tiles == true) {
+
+
+                var idtouse = "tileimgid" + id;
+                var theElementCollection = document.getElementById(idtouse);
+
+
+                var srcImg = selectedTileIs;
+                theElementCollection.src = srcImg;
+
+                indextile[id] = selectedValue;
+
+
+            } else if (tapthatisactive.Attributes == true) {
+
+                // gridselectedatt + id
+                var idtouse = "gridselectedatt" + id;
+                var theElementCollection = document.getElementById(idtouse);
+                var srcImg = selectedTinyTilePath;
+                theElementCollection.src = srcImg;
+
+
+                indexAtt[id] = selectedValue;
+
+
+            } else if (tapthatisactive.Settings == true) {
+
+
+            } else {
+
+            }
+
+        }
+
+
+        function InitArrays() {
+
+            var totallength = SettingsObj.LvlHeight * SettingsObj.LvlWidth;
+            for (var i = 0; i < totallength-1; i++) {
+                indextile.push(selectedValue);
+                indexAtt.push(selectedValue);
+            }
+
+        }
+
+
+        //document.addEventListener('DOMContentLoaded',
+        //    function (event) {
+
+        try {
+
+            //the event occurred
+
+            function INIT() {
+
+                var debug = false;
+                if (!debug) {
+
+
+                    // alert("init 1");
+
+                    var obj = window.external.InitJs("bajs");
+
+                    // alert("obj: "+obj);
+
+                    if (obj != null) {
+
+                        // LOOPA alla tiles och kör på
+
+
+                        var res = obj.split("/");
+                        for (var i = 0; i < res.length; i++) {
+
+                            var resVal = res[i];
+                            var splitResVal = resVal.split(":");
+
+                            switch (splitResVal[0]) {
+                                case "LvlHeight":
+                                    SettingsObj.LvlHeight = splitResVal[1];
+                                    break;
+                                case "LvlWidth":
+                                    SettingsObj.LvlWidth = splitResVal[1];
+                                    break;
+                                case "NumberOfTilesWidth":
+                                    SettingsObj.NumberOfTilesWidth = splitResVal[1];
+                                    break;
+                                case "NumberOfTilesHeight":
+                                    SettingsObj.NumberOfTilesHeight = splitResVal[1];
+                                    break;
+                                case "TileWidthPX":
+                                    SettingsObj.TileWidthPX = splitResVal[1];
+                                    break;
+                                case "TileHeightPX":
+                                    SettingsObj.TileHeightPX = splitResVal[1];
+                                    break;
+                                default:
+                            }
+
+
+                        }
+
+                        //alert(SettingsObj.TileHeightPX);
+
+                        //
+
+                        DrawGrid();
+                        DrawTiles();
+                        InitArrays();
+
+                        //openCity(evt, cityName)
+
+                    } else {
+                        alert("null ju ");
+                    }
+                } else {
+
+                    //mock settings obj
+                    SettingsObj.LvlHeight = 20;
+
+                    SettingsObj.LvlWidth = 20;
+
+                    SettingsObj.NumberOfTilesWidth = 5;
+
+                    SettingsObj.NumberOfTilesHeight = 5;
+
+                    SettingsObj.TileWidthPX = 16;
+
+                    SettingsObj.TileHeightPX = 16;
+                    //
+                    DrawGrid();
+                    DrawTiles();
+
+                }
+            }
+            setTimeout(function () {
+                INIT();
+            }, 2000);
+
+
+        } catch (e) {
+            alert("init cath");
+        }
+
+                                                        //});
+
+    </script>
+
+
+    <style>
+
+        .selectatt {
+            position: absolute;
+            z-index: 50;
+            /*padding-left: 5px;*/
+            top: 2px;
+            left: 2px;
+            display: block;
+        }
+
+            .selectatt.show {
+                display: block;
+            }
+
+            .selectatt.dontshow {
+                display: none;
+            }
+
+        /*img*/
+        img.gridimg {
+            max-width: 64px;
+            min-width: 64px;
+            min-height: 64px;
+        }
+
+            img.gridimg.selecttile {
+                padding: 5px;
+                border: 1px solid gray;
+            }
+
+        /*grid*/
+        table td {
+            /*padding: 16px;*/
+            /*display: block;*/
+            /*border: 1px solid gray;*/
+            /*min-width: 16px;
+            max-width: 16px;
+            height: 16px;
+            max-height: 16px;*/
+            position: relative;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+            /* Style the buttons that are used to open the tab content */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                /*padding: 14px 16px;*/
+                padding: 10px 2px;
+                transition: 0.3s;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            clear: both;
+        }
+    </style>
+
+</body>

@@ -1,0 +1,10 @@
+{
+  "LvlWidth": 64,
+  "LvlHeight": 25,
+
+  "TileWidthPX": 16,
+  "TileHeightPX": 16,
+
+  "NumberOfTilesWidth": 5,
+  "NumberOfTilesHeight": 5
+}
