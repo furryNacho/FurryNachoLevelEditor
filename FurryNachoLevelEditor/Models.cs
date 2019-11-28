@@ -14,38 +14,6 @@ using System.Windows.Media.Imaging;
 
 namespace FurryNachoLevelEditor
 {
-    public class Models
-    {
-
-
-
-    }
-
-    public class Tiles
-    {
-
-
-
-    }
-    public class Attributes
-    {
-
-
-
-    }
-    public class Settings
-    {
-
-
-
-    }
-    public class Level
-    {
-
-
-
-    }
-
     public class Tile : INotifyPropertyChanged
     {
         private int _TileNumber;
@@ -80,11 +48,6 @@ namespace FurryNachoLevelEditor
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
     }
 
 
@@ -115,53 +78,54 @@ namespace FurryNachoLevelEditor
             {
                 case 0:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\zero.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\zero.bmp")));
                         break;
                     }
 
                 case 1:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\one.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\one.bmp")));
                         break;
                     }
                 case 2:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\two.bmp"));
+                     
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\two.bmp")));
                         break;
                     }
                 case 3:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\three.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\three.bmp")));
                         break;
                     }
                 case 4:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\four.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\four.bmp")));
                         break;
                     }
                 case 5:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\five.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\five.bmp")));
                         break;
                     }
                 case 6:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\six.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\six.bmp")));
                         break;
                     }
                 case 7:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\seven.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\seven.bmp")));
                         break;
                     }
                 case 8:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\eight.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\eight.bmp")));
                         break;
                     }
                 case 9:
                     {
-                        result = new BitmapImage(new Uri(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Attributes\nine.bmp"));
+                        result = new BitmapImage(new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, @"\Content\Attributes\nine.bmp")));
                         break;
                     }
             }

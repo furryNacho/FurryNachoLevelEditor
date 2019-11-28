@@ -31,7 +31,7 @@ namespace FurryNachoLevelEditor
                 }
             }
         }
-       // private Dictionary<string, Sprite> m_mapSprites { get; set; } = new Dictionary<string, Sprite>();
+        // private Dictionary<string, Sprite> m_mapSprites { get; set; } = new Dictionary<string, Sprite>();
 
         private Dictionary<string, Bitmap> m_mapSpritesBitMap { get; set; } = new Dictionary<string, Bitmap>();
 
@@ -50,41 +50,19 @@ namespace FurryNachoLevelEditor
 
         }
 
-        //public Sprite GetSprite(string name)
-        //{
-        //    Sprite sprite;
-        //    if (m_mapSprites.TryGetValue(name, out sprite))
-        //    {
-        //        return sprite;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
 
         public void LoadSprites()
         {
-         
-           // string basePath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
 
             string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Content\Load\testtilesheet.bmp");
 
             if (!File.Exists(fileLocation))
             {
-                try
-                {
-                
-                }
-                catch (Exception e)
-                {
-                    
-                    throw;
-                }
+               //log
             }
 
 
-            //Load("TileSheet", @"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Load\testtilesheet.bmp");
+
             Load("TileSheet", fileLocation);
         }
         private void Load(string sName, string sFileName)
@@ -93,10 +71,8 @@ namespace FurryNachoLevelEditor
             Bitmap myBitmap = new Bitmap(sFileName);
             m_mapSpritesBitMap.Add(sName, myBitmap);
 
-            //var sprite = Sprite.Load(sFileName);
-            //m_mapSprites.Add(sName, sprite);
         }
 
-       
+
     }
 }

@@ -73,7 +73,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Assets.cs" />
-    <Compile Include="Horse.cs" />
+    <Compile Include="Worker.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="Content\Export\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Attributes\eight.bmp" />
@@ -127,12 +128,13 @@
     <Resource Include="Content\Attributes\zero.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Content\Export\mapoutput.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Content\Settings\favIconNacho.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="bin\Debug\Content\Load\testtilesheet.bmp" />
+    <Resource Include="bin\Debug\Content\Load\testtilesheet.png" />
+    <Resource Include="bin\Debug\Content\Attributes\one.bmp" />
+    <Resource Include="bin\Debug\Content\Attributes\onetiny.bmp" />
     <Content Include="bin\Debug\FurryNachoLevelEditor.exe" />
     <Content Include="bin\Debug\FurryNachoLevelEditor.pdb" />
     <Content Include="bin\Debug\Newtonsoft.Json.dll" />

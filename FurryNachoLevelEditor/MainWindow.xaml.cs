@@ -27,98 +27,75 @@ using TabControl = System.Windows.Controls.TabControl;
 
 namespace FurryNachoLevelEditor
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private Horse worker { get; set; }
+        //Global var's
+        private ScriptingHelper SH = null;
+        public bool Development { get; set; } = false;
+        public string AbsolutPath { get; set; } = @"C:\FurryNachoLevelEditor\View.html";
 
-        private ScriptingHelper HS = null;
-
+        //Init
         public MainWindow()
         {
-            InitializeComponent();
-
-
-
+            InitializeComponent();// Nåt wpf bara gör.
             DataContext = new MainWindowViewModel();
 
-            worker = new Horse();
+            SH = new ScriptingHelper();// init SH
 
-            worker.SetUpSprites();
-
-            HS = new ScriptingHelper();
-
-
-            
+            #region Ikon
             string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Content\Settings\favIconNacho.png");
-
             if (!File.Exists(fileLocation))
             {
-                try
-                {
-                    //@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Settings\favIconNacho.png"
-                }
-                catch (Exception e)
-                {
-
-                    throw;
-                }
+                // Log
             }
             Uri iconUri =
                 new Uri(
                     fileLocation,
                     UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(iconUri);
+            #endregion
         }
 
 
-
-
-        //void selectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        //{
-
-        //    var getValue = e.AddedCells[0].Item.ToString();
-
-        //    //MessageBox.Show("Clicked "+ getValue);
-
+        //När fönstret är laddat 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"View.html");
+            // För att avgöra vilken mappstruktur som sak användas.
+            string fileLocation = "";
+            if (Development)
+            {
+                //absolut 
+                fileLocation = AbsolutPath;
+            }
+            else
+            {
+                //relative
+                fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"View.html");
+            }
 
             if (!File.Exists(fileLocation))
             {
-                // "C:\\Users\\kim_k\\source\\repos\\FurryNachoLevelEditor\\FurryNachoLevelEditor\\bin\\Debug\\View.html"
+                // Log
             }
 
 
-            //string uri = AppDomain.CurrentDomain.BaseDirectory + "View.html";
-            //string output = uri.Substring(0, uri.IndexOf("bin"));
-            //output = output + "View.html";
-
-
             browser.Navigate(new Uri(fileLocation, UriKind.Absolute));
-            //browser.Navigate(new Uri(output, UriKind.Absolute));
+
+            // lägger på event för att kunna köra när laddningen är klar.
             browser.LoadCompleted += webBrowser1_LoadCompleted;
 
-
-            //browser.ObjectForScripting = new ScriptingHelper();
-
-            browser.ObjectForScripting = HS;
-
+            // tilldela script helper på browser objektet.
+            browser.ObjectForScripting = SH;
         }
+
 
         void webBrowser1_LoadCompleted(object sender, NavigationEventArgs e)
         {
             dynamic document = browser.Document;
 
-
-
+            // Ett sätt att hantera felmeddelande är att tysta felmedelande. 
             try
             {
-                // Be silent 
                 dynamic script = document.createElement("script");
                 script.type = @"text/javascript";
                 script.text = @"window.onerror = function(msg,url,line){return true;}";
@@ -127,107 +104,64 @@ namespace FurryNachoLevelEditor
             }
             catch (Exception exception)
             {
-
+                // Log
             }
 
+        }
+    }
 
 
+    // Saker som kallas på från js
+    [ComVisible(true)]
+    public class ScriptingHelper
+    {
+        public SettingsObj obj { get; set; } = new SettingsObj();
+        private Worker worker { get; set; }
 
-            try
-            {
-               
+        private string SavedMapValTiles { get; set; }
+        private string SavedMapValAttributes { get; set; }
 
-            }
-            catch (Exception exception)
-            {
+        public ScriptingHelper()
+        {
+            worker = new Worker(); // init worker
+            worker.SetUpSprites(); // laddar sprite sheet // TODO tror jag behöver denna i sh också eller motsvarande, som kanske tar parameter också
+            SetSettingsObj(worker);
+        }
 
-            }
-
-
-
-
-            try
-            {
-                // när man klickar på flikarna
-            }
-            catch (Exception exception)
-            {
-
-            }
-
-            try
-            {
- 
-
-
-
-            }
-            catch (Exception exception)
-            {
-
-            }
-
-
-
-
-
-            try
-            {
-                // knappar attribut
-            }
-            catch (Exception exception)
-            {
-
-            }
-
-            try
-            {
-                // knappar settings
-
-
-
-            }
-            catch (Exception exception)
-            {
-
-            }
-
-
-
-            HS.obj = new SettingsObj()
-            {
-                LvlHeight = worker.currentTile.nHeight,
-                LvlWidth = worker.currentTile.nWidth,
-                NumberOfTilesWidth = worker.currentTile.NumberOfTilesWidth,
-                NumberOfTilesHeight = worker.currentTile.NumberOfTilesHeight,
-                TileWidthPX = 16,
-                TileHeightPX = 16
-            };
-
-
+        // Sätt värde på det objekt som skickas till vyn
+        public void SetSettingsObj(Worker workerParam)
+        {
+            obj.LvlHeight = workerParam.currentTile.nHeight;
+            obj.LvlWidth = workerParam.currentTile.nWidth;
+            obj.NumberOfTilesWidth = workerParam.currentTile.NumberOfTilesWidth;
+            obj.NumberOfTilesHeight = workerParam.currentTile.NumberOfTilesHeight;
+            obj.TileWidthPX = 16;
+            obj.TileHeightPX = 16;
         }
 
 
 
-    }
 
-
-
-
-    //
-
-    [ComVisible(true)]
-    public class ScriptingHelper
-    {
-        //  public int antaltiles = 0;
-
-        public SettingsObj obj = null;
-
-        // https://stackoverflow.com/questions/470222/hosting-and-interacting-with-a-webpage-inside-a-wpf-app
-
-
+        // js vill ha värden för att rita grid. Ropas på ifrån view.
         public string InitJs(string message)
         {
+            var proxyJson = "LvlHeight:" + obj.LvlHeight.ToString() + "/";
+            proxyJson += "LvlWidth:" + obj.LvlWidth.ToString() + "/";
+            proxyJson += "NumberOfTilesWidth:" + obj.NumberOfTilesWidth.ToString() + "/";
+            proxyJson += "NumberOfTilesHeight:" + obj.NumberOfTilesHeight.ToString() + "/";
+            proxyJson += "TileWidthPX:" + obj.TileWidthPX.ToString() + "/";
+            proxyJson += "TileHeightPX:" + obj.TileHeightPX.ToString();
+
+
+            return proxyJson;
+        }
+
+        // js vill ha värden för att rita grid. Ropas på ifrån view.
+        public string GetValueSavedMap()
+        {
+
+
+
 
             var proxyJson = "LvlHeight:" + obj.LvlHeight.ToString() + "/";
             proxyJson += "LvlWidth:" + obj.LvlWidth.ToString() + "/";
@@ -238,44 +172,82 @@ namespace FurryNachoLevelEditor
 
 
             return proxyJson;
-            //return antaltiles;
         }
 
 
-        public void ShowMessage(string message)
+        // Knappar som klickas på från vyn som inte kräver haxiga parametrar. Ropas på ifrån view.
+        public string ButtonClick(string nameOfButton)
         {
-
-            MessageBox.Show(message);
-        }
-
-
-
-        public bool ButtonClick(string nameOfButton)
-        {
+            var Msg = "";
             switch (nameOfButton)
             {
-                case "save":
-                    break;
 
+                // TODO kanske räcker med en ändå, få in värde på vilken map och sprite sheet so mska användas och gör om laddningen
                 case "load":
-
                     break;
+                case "loadmap":
+                    break;
+
 
                 case "export":
+                    // Kommer inte ska. Har fått en egen metod
                     break;
                 case "exit":
                     //Environment.Exit(0);
                     System.Windows.Application.Current.Shutdown();
                     break;
                 default:
-                    return false;
+                    Msg += "Could not find matching switch value on 'ButtonClick'";
+                    break;
             }
 
-            return true;
+            return Msg;
         }
 
-        private int[] arr1 = new int[5];
-        private int[] arr2 = new int[5];
+        // Funktion för att importera värden sparad map. Ropas på från vyn
+        public string Import()
+        {
+            try
+            {
+                string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Content\Export\mapoutput.json");
+                if (!File.Exists(fileLocation))
+                {
+                    return "Could not find [map].json file.";
+                }
+                else
+                {
+                    LevelJsonObj SavedMap = JsonConvert.DeserializeObject<LevelJsonObj>(File.ReadAllText(fileLocation));
+                    
+                    SavedMapValTiles = string.Join(",", SavedMap.TileIndex);
+                    SavedMapValAttributes = string.Join(",", SavedMap.AttributeIndex);
+
+                    return "OK";
+                }
+
+            }
+            catch (Exception e)
+            {
+                return "Exception Import: "+e.ToString();
+            }
+        }
+        // Funktion för att hämta värden sparad map. Ropas på från vyn
+        public string GetSavedMapVal(string nameOfStringToGet)
+        {
+            if (nameOfStringToGet == "tiles")
+            {
+                return SavedMapValTiles;
+            }
+            else if (nameOfStringToGet == "attributes")
+            {
+                return SavedMapValAttributes;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        // Knapp som kräver haxiga parametrar, Export av griden till en json som går att användas i spelet. Ropas på ifrån view.
         public bool Export(dynamic dynamicObj)
         {
             try
@@ -291,15 +263,29 @@ namespace FurryNachoLevelEditor
 
                 var attIndexString = (string)dynamicObj.indexAttprop;
                 var sArrayAtt = attIndexString.Split(';');
-                lvlJsonObj.AttributeIndex = Array.ConvertAll(sArrayAtt, int.Parse);
+                lvlJsonObj.AttributeIndex = Array.ConvertAll(sArrayAtt, int.Parse); // TODO: undefined?! // sista blir undefined 1600, tycks inte funka som tänkt
+
+
+                var givenName = (string)dynamicObj.indexAttprop;
+
+
+                string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Content\Export\mapoutput.json");
+                if (!File.Exists(fileLocation))
+                {
+                    // Log
+                }
 
                 string json = JsonConvert.SerializeObject(lvlJsonObj);
-                System.IO.File.WriteAllText(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Export\mapoutput.txt", json);
+                System.IO.File.WriteAllText(fileLocation, json);
+
+
+
 
                 return true;
             }
             catch (Exception e)
             {
+                // Log
                 return false;
             }
 
@@ -316,6 +302,5 @@ namespace FurryNachoLevelEditor
 
 
     }
-    //
 
 }

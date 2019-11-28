@@ -10,12 +10,12 @@ using Newtonsoft.Json;
 
 namespace FurryNachoLevelEditor
 {
-    public class Horse
+    public class Worker
     {
 
         public TilesModel currentTile { get; set; }
 
-        public Horse()
+        public Worker()
         {
     
         }
@@ -26,7 +26,7 @@ namespace FurryNachoLevelEditor
         {
            
 
-            SettingsObj movie1 = JsonConvert.DeserializeObject<SettingsObj>(File.ReadAllText(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Settings\settings.json"));
+            SettingsObj movie1 = JsonConvert.DeserializeObject<SettingsObj>(File.ReadAllText(@"C:\FurryNachoLevelEditor\Content\Settings\settings.json"));
 
         }
 
@@ -38,7 +38,7 @@ namespace FurryNachoLevelEditor
             
 
             // serialize JSON to a string and then write string to a file
-            File.WriteAllText(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Settings\settings.json", JsonConvert.SerializeObject(defaultTestObj));
+            File.WriteAllText(@"C:\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Settings\settings.json", JsonConvert.SerializeObject(defaultTestObj));
 
 
         }
@@ -54,7 +54,7 @@ namespace FurryNachoLevelEditor
 
 
            
-            System.IO.File.WriteAllText(@"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Export\mapoutput.txt", text);
+            System.IO.File.WriteAllText(@"C:\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Export\mapoutput.txt", text);
         }
 
 

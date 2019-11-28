@@ -16,7 +16,6 @@ namespace FurryNachoLevelEditor
         public int nWidth;
         public int nHeight;
         public string sName;
-        //public Sprite pSprite;
         public Bitmap pSprite;
 
 
@@ -94,9 +93,6 @@ namespace FurryNachoLevelEditor
                         }
                     }
 
-                    //var imgFilePath =
-                    //    @"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Load\Tiles\" +
-                    //    "img" + currIdx + ".jpg";
 
                     var imgFilePath =
                         fileLocation +
@@ -129,23 +125,13 @@ namespace FurryNachoLevelEditor
             string fileLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Content\Settings\settings.json");
             if (!File.Exists(fileLocation))
             {
-                try
-                {
-
-                    // @"C:\Users\kim_k\source\repos\FurryNachoLevelEditor\FurryNachoLevelEditor\Content\Settings\settings.json"
-                }
-                catch (Exception e)
-                {
-
-                    throw;
-                }
+                // Log
             }
 
 
             this.CreateObj = new CreateObj()
             {
                 fileData = fileLocation,
-                //sprite = Assets.Instance.GetSprite("TileSheet"),
                 spriteAsBitmap = Assets.Instance.GetSprite("TileSheet"),
                 name = "Tile sheet assets",
             };
@@ -162,7 +148,7 @@ namespace FurryNachoLevelEditor
     public class CreateObj
     {
         public string fileData { get; set; }
-        // public Sprite sprite { get; set; }
+
         public string name { get; set; }
 
         public Bitmap spriteAsBitmap { get; set; }
